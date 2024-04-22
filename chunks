@@ -1,0 +1,25 @@
+def create_chunks(coins, N):
+    coins.sort(reverse=True)  # Sort coins in descending order
+    chunks = []
+    current_chunk = []
+    current_sum = 0
+    
+    for coin in coins:
+        if current_sum + coin <= N:
+            current_chunk.append(coin)
+            current_sum += coin
+        else:
+            chunks.append(current_chunk)
+            current_chunk = [coin]
+            current_sum = coin
+
+    if current_chunk:
+        chunks.append(current_chunk)
+    
+    return chunks
+
+# Example usage:
+coins = [3, 9, 1, 7, 5, 2, 10, 8, 4, 6]
+N = 10
+chunks = create_chunks(coins, N)
+print("Chunks:", chunks)
