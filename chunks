@@ -8,7 +8,7 @@ def create_chunks(coins, N):
         if current_sum + coin <= N:
             current_chunk.append(coin)
             current_sum += coin
-        else:
+        elif current_chunk:
             chunks.append(current_chunk)
             current_chunk = [coin]
             current_sum = coin
